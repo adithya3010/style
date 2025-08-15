@@ -26,14 +26,14 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="bg-gray-900 text-white pt-16 pb-8">
+    <footer className="bg-gray-900 text-white pt-16 pb-8 animate-fade-in">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Main Footer Content */}
-        <div className="grid lg:grid-cols-5 gap-8 mb-12">
+        <div className="grid lg:grid-cols-5 gap-8 mb-12 animate-slide-up">
           {/* Brand Section */}
           <div className="lg:col-span-2">
-            <div className="flex items-center space-x-2 mb-6">
-              <div className="bg-gradient-to-br from-teal-400 to-purple-500 p-2 rounded-xl">
+            <div className="flex items-center space-x-2 mb-6 animate-slide-up">
+              <div className="bg-gradient-to-br from-teal-400 to-purple-500 p-2 rounded-xl hover:scale-110 transition-bounce animate-bounce-gentle">
                 <Heart className="h-6 w-6 text-white" />
               </div>
               <span className="text-2xl font-bold bg-gradient-to-r from-teal-400 to-purple-400 bg-clip-text text-transparent">
@@ -41,21 +41,21 @@ const Footer = () => {
               </span>
             </div>
             
-            <p className="text-gray-300 mb-6 leading-relaxed">
+            <p className="text-gray-300 mb-6 leading-relaxed animate-slide-up" style={{ animationDelay: '0.2s' }}>
               Harmony of Mind – Blending Ancient Wisdom with Modern Science for Complete Mental Wellness. 
               Join thousands on their journey to inner peace and emotional healing.
             </p>
 
             {/* Trust Badges */}
-            <div className="flex items-center space-x-4 mb-6">
-              <div className="flex items-center space-x-2 bg-gray-800 px-3 py-2 rounded-full">
+            <div className="flex items-center space-x-4 mb-6 animate-slide-up" style={{ animationDelay: '0.4s' }}>
+              <div className="flex items-center space-x-2 bg-gray-800 px-3 py-2 rounded-full hover-lift">
                 <Lock className="h-4 w-4 text-blue-400" />
                 <span className="text-xs text-gray-300">End-to-End Encrypted</span>
               </div>
             </div>
 
             {/* Social Links */}
-            <div className="flex space-x-4">
+            <div className="flex space-x-4 animate-slide-up" style={{ animationDelay: '0.6s' }}>
               {[
                 { icon: Facebook, href: '#', color: 'hover:text-blue-400' },
                 { icon: Twitter, href: '#', color: 'hover:text-blue-300' },
@@ -65,7 +65,7 @@ const Footer = () => {
                 <a
                   key={index}
                   href={social.href}
-                  className={`w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center transition-colors duration-200 ${social.color}`}
+                  className={`w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center transition-smooth interactive-button ${social.color}`}
                 >
                   <social.icon className="h-5 w-5" />
                 </a>
@@ -75,14 +75,14 @@ const Footer = () => {
 
           {/* Footer Links */}
           {footerSections.map((section, index) => (
-            <div key={index}>
+            <div key={index} className="animate-slide-up" style={{ animationDelay: `${0.2 * (index + 1)}s` }}>
               <h3 className="text-lg font-semibold mb-4">{section.title}</h3>
               <ul className="space-y-3">
                 {section.links.map((link, linkIndex) => (
                   <li key={linkIndex}>
                     <a
                       href="#"
-                      className="text-gray-300 hover:text-teal-400 transition-colors duration-200 text-sm"
+                      className="text-gray-300 hover:text-teal-400 transition-smooth text-sm hover:translate-x-1"
                     >
                       {link}
                     </a>
@@ -94,10 +94,10 @@ const Footer = () => {
         </div>
 
         {/* Contact Bar */}
-        <div className="bg-gradient-to-r from-teal-900/50 to-purple-900/50 rounded-2xl p-6 mb-8">
+        <div className="bg-gradient-to-r from-teal-900/50 to-purple-900/50 rounded-2xl p-6 mb-8 hover-lift animate-slide-up" style={{ animationDelay: '0.8s' }}>
           <div className="grid md:grid-cols-3 gap-6">
-            <div className="flex items-center space-x-3">
-              <div className="w-10 h-10 bg-red-500/20 rounded-lg flex items-center justify-center">
+            <div className="flex items-center space-x-3 interactive-card p-2 rounded-lg">
+              <div className="w-10 h-10 bg-red-500/20 rounded-lg flex items-center justify-center animate-bounce-gentle">
                 <Phone className="h-5 w-5 text-red-400" />
               </div>
               <div>
@@ -106,8 +106,8 @@ const Footer = () => {
               </div>
             </div>
             
-            <div className="flex items-center space-x-3">
-              <div className="w-10 h-10 bg-teal-500/20 rounded-lg flex items-center justify-center">
+            <div className="flex items-center space-x-3 interactive-card p-2 rounded-lg">
+              <div className="w-10 h-10 bg-teal-500/20 rounded-lg flex items-center justify-center animate-bounce-gentle" style={{ animationDelay: '0.5s' }}>
                 <Mail className="h-5 w-5 text-teal-400" />
               </div>
               <div>
@@ -116,8 +116,8 @@ const Footer = () => {
               </div>
             </div>
             
-            <div className="flex items-center space-x-3">
-              <div className="w-10 h-10 bg-purple-500/20 rounded-lg flex items-center justify-center">
+            <div className="flex items-center space-x-3 interactive-card p-2 rounded-lg">
+              <div className="w-10 h-10 bg-purple-500/20 rounded-lg flex items-center justify-center animate-bounce-gentle" style={{ animationDelay: '1s' }}>
                 <Globe className="h-5 w-5 text-purple-400" />
               </div>
               <div>
@@ -129,7 +129,7 @@ const Footer = () => {
         </div>
 
         {/* Bottom Bar */}
-        <div className="border-t border-gray-800 pt-8">
+        <div className="border-t border-gray-800 pt-8 animate-slide-up" style={{ animationDelay: '1s' }}>
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <div className="flex items-center space-x-6 text-sm text-gray-400">
               <span>© 2024 Nirvaha Wellness LLP. All rights reserved.</span>

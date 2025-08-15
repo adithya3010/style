@@ -63,10 +63,10 @@ const Professional = () => {
   ];
 
   return (
-    <section id="professional" className="py-20 bg-gray-50">
+    <section id="professional" className="py-20 bg-gray-50 page-spacing">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-16 animate-fade-in">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
             Professional
             <span className="bg-gradient-to-r from-teal-600 to-purple-600 bg-clip-text text-transparent"> Services</span>
@@ -77,15 +77,15 @@ const Professional = () => {
         </div>
 
         {/* Trust Indicators */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 mb-16 animate-slide-up" style={{ animationDelay: '0.2s' }}>
           {[
             { icon: Shield, label: 'HIPAA Compliant', desc: 'Secure & Private' },
             { icon: Award, label: 'Licensed Practitioners', desc: '500+ Certified' },
             { icon: Building, label: 'Enterprise Ready', desc: 'Scalable Solutions' },
             { icon: Users, label: 'Global Reach', desc: '50+ Countries' }
           ].map((trust, index) => (
-            <div key={index} className="text-center p-6 bg-white rounded-xl shadow-sm border border-gray-100">
-              <div className="w-12 h-12 bg-gradient-to-r from-teal-600 to-purple-600 rounded-xl flex items-center justify-center mx-auto mb-3">
+            <div key={index} className="text-center p-6 bg-white rounded-xl shadow-sm border border-gray-100 interactive-card animate-scale-in" style={{ animationDelay: `${0.1 * index}s` }}>
+              <div className="w-12 h-12 bg-gradient-to-r from-teal-600 to-purple-600 rounded-xl flex items-center justify-center mx-auto mb-3 animate-bounce-gentle">
                 <trust.icon className="h-6 w-6 text-white" />
               </div>
               <div className="font-semibold text-gray-900 mb-1">{trust.label}</div>
@@ -96,12 +96,12 @@ const Professional = () => {
 
         {/* Professional Services */}
         <div className="mb-16">
-          <h3 className="text-2xl font-bold text-gray-900 mb-8 text-center">Our Professional Solutions</h3>
+          <h3 className="text-2xl font-bold text-gray-900 mb-8 text-center animate-fade-in" style={{ animationDelay: '0.4s' }}>Our Professional Solutions</h3>
           
-          <div className="grid lg:grid-cols-3 gap-8">
+          <div className="grid lg:grid-cols-3 gap-8 animate-slide-up" style={{ animationDelay: '0.5s' }}>
             {services.map((service, index) => (
-              <div key={index} className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300">
-                <div className="w-12 h-12 bg-gradient-to-r from-teal-600 to-purple-600 rounded-xl flex items-center justify-center mb-6">
+              <div key={index} className="bg-white rounded-2xl p-8 shadow-lg interactive-card animate-scale-in" style={{ animationDelay: `${0.1 * index}s` }}>
+                <div className="w-12 h-12 bg-gradient-to-r from-teal-600 to-purple-600 rounded-xl flex items-center justify-center mb-6 animate-bounce-gentle">
                   <service.icon className="h-6 w-6 text-white" />
                 </div>
                 
@@ -110,7 +110,7 @@ const Professional = () => {
                 
                 <ul className="space-y-3 mb-6">
                   {service.features.map((feature, featureIndex) => (
-                    <li key={featureIndex} className="flex items-center space-x-3">
+                    <li key={featureIndex} className="flex items-center space-x-3 hover:translate-x-1 transition-smooth" style={{ transitionDelay: `${featureIndex * 0.05}s` }}>
                       <CheckCircle className="h-5 w-5 text-teal-600 flex-shrink-0" />
                       <span className="text-gray-700 text-sm">{feature}</span>
                     </li>
@@ -119,7 +119,7 @@ const Professional = () => {
                 
                 <div className="border-t border-gray-200 pt-4">
                   <div className="text-sm text-gray-600 mb-4">{service.pricing}</div>
-                  <button className="w-full bg-gradient-to-r from-teal-600 to-purple-600 text-white py-3 rounded-lg font-medium hover:shadow-lg transition-all duration-200">
+                  <button className="w-full bg-gradient-to-r from-teal-600 to-purple-600 text-white py-3 rounded-lg font-medium interactive-button">
                     Learn More
                   </button>
                 </div>
@@ -129,19 +129,19 @@ const Professional = () => {
         </div>
 
         {/* Certification Programs */}
-        <div className="bg-white rounded-3xl p-8 lg:p-12 shadow-lg">
-          <div className="text-center mb-12">
+        <div className="bg-white rounded-3xl p-8 lg:p-12 shadow-lg hover-lift animate-fade-in" style={{ animationDelay: '0.7s' }}>
+          <div className="text-center mb-12 animate-slide-up">
             <h3 className="text-2xl font-bold text-gray-900 mb-4">Nirvaha Academy</h3>
             <p className="text-gray-600 max-w-2xl mx-auto">
               Advance your career with our comprehensive certification programs in holistic wellness and AI-assisted therapy.
             </p>
           </div>
           
-          <div className="grid lg:grid-cols-3 gap-8 mb-12">
+          <div className="grid lg:grid-cols-3 gap-8 mb-12 animate-slide-up" style={{ animationDelay: '0.3s' }}>
             {certifications.map((cert, index) => (
-              <div key={index} className="border border-gray-200 rounded-xl p-6 hover:border-teal-300 transition-colors">
+              <div key={index} className="border border-gray-200 rounded-xl p-6 hover:border-teal-300 interactive-card animate-scale-in" style={{ animationDelay: `${0.1 * index}s` }}>
                 <div className="text-center mb-4">
-                  <div className="w-16 h-16 bg-gradient-to-br from-teal-100 to-purple-100 rounded-full flex items-center justify-center mx-auto mb-3">
+                  <div className="w-16 h-16 bg-gradient-to-br from-teal-100 to-purple-100 rounded-full flex items-center justify-center mx-auto mb-3 animate-bounce-gentle">
                     <GraduationCap className="h-8 w-8 text-teal-600" />
                   </div>
                   <h4 className="font-semibold text-gray-900 mb-2">{cert.title}</h4>
@@ -160,20 +160,20 @@ const Professional = () => {
                 
                 <p className="text-gray-600 text-sm mb-6">{cert.description}</p>
                 
-                <button className="w-full border-2 border-teal-600 text-teal-600 py-2 rounded-lg font-medium hover:bg-teal-600 hover:text-white transition-all duration-200">
+                <button className="w-full border-2 border-teal-600 text-teal-600 py-2 rounded-lg font-medium hover:bg-teal-600 hover:text-white interactive-button">
                   Enroll Now
                 </button>
               </div>
             ))}
           </div>
           
-          <div className="text-center">
-            <div className="inline-flex items-center space-x-4 bg-gradient-to-r from-teal-50 to-purple-50 px-6 py-3 rounded-full mb-6">
+          <div className="text-center animate-slide-up" style={{ animationDelay: '0.6s' }}>
+            <div className="inline-flex items-center space-x-4 bg-gradient-to-r from-teal-50 to-purple-50 px-6 py-3 rounded-full mb-6 hover-lift">
               <Award className="h-5 w-5 text-teal-600" />
               <span className="text-sm font-medium text-gray-700">Accredited by International Wellness Board</span>
             </div>
             <div>
-              <button className="bg-gradient-to-r from-teal-600 to-purple-600 text-white px-8 py-3 rounded-full font-semibold hover:shadow-lg transition-all duration-200">
+              <button className="bg-gradient-to-r from-teal-600 to-purple-600 text-white px-8 py-3 rounded-full font-semibold interactive-button">
                 View All Programs
               </button>
             </div>

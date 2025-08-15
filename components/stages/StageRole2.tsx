@@ -9,10 +9,10 @@ interface StageRole2Props {
 
 const StageRole2: React.FC<StageRole2Props> = ({ handleChange, nextStep }) => {
   const inputClass =
-    "w-full rounded-full border-2 border-teal-200 p-4 bg-white/90 focus:outline-none focus:ring-2 focus:ring-teal-400 transition text-gray-800 text-lg mb-3 placeholder-gray-400";
+    "w-full rounded-full border-2 border-teal-200 p-4 bg-white/90 focus:outline-none focus:ring-2 focus:ring-teal-400 transition-smooth text-gray-800 text-lg mb-3 placeholder-gray-400 hover:border-teal-300";
 
   return (
-    <div>
+    <div className="animate-fade-in">
       <input
         type="email"
         name="email"
@@ -50,7 +50,7 @@ const StageRole2: React.FC<StageRole2Props> = ({ handleChange, nextStep }) => {
         <button
           onClick={nextStep}
           type="button"
-          className="w-full bg-gradient-to-r from-teal-500 to-purple-500 text-white rounded-full py-4 px-8 font-semibold shadow hover:from-teal-600 hover:to-purple-600 transition text-xl"
+          className="w-full bg-gradient-to-r from-teal-500 to-purple-500 text-white rounded-full py-4 px-8 font-semibold shadow interactive-button text-xl"
         >
           Next
         </button>

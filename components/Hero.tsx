@@ -30,28 +30,28 @@ const Hero = () => {
   };
 
   return (
-    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden page-spacing">
       {/* Background Gradient */}
       <div className="absolute inset-0 bg-gradient-to-br from-teal-50 via-white to-purple-50"></div>
       
       {/* Decorative Elements */}
-      <div className="hidden sm:block absolute top-20 left-10 w-20 h-20 bg-gradient-to-br from-teal-200 to-transparent rounded-full opacity-60 animate-pulse"></div>
-      <div className="hidden sm:block absolute bottom-32 right-16 w-32 h-32 bg-gradient-to-br from-purple-200 to-transparent rounded-full opacity-40 animate-pulse delay-1000"></div>
-      <div className="hidden sm:block absolute top-1/3 right-20 w-16 h-16 bg-gradient-to-br from-yellow-200 to-transparent rounded-full opacity-50 animate-pulse delay-500"></div>
+      <div className="hidden sm:block absolute top-20 left-10 w-20 h-20 bg-gradient-to-br from-teal-200 to-transparent rounded-full opacity-60 animate-float"></div>
+      <div className="hidden sm:block absolute bottom-32 right-16 w-32 h-32 bg-gradient-to-br from-purple-200 to-transparent rounded-full opacity-40 animate-pulse-soft"></div>
+      <div className="hidden sm:block absolute top-1/3 right-20 w-16 h-16 bg-gradient-to-br from-yellow-200 to-transparent rounded-full opacity-50 animate-bounce-gentle"></div>
 
-      <div className="container mx-auto px-2 sm:px-4 lg:px-8 relative z-10">
+      <div className="container mx-auto px-2 sm:px-4 lg:px-8 relative z-10 animate-fade-in">
         <div className="grid lg:grid-cols-2 gap-6 sm:gap-12 lg:gap-16 items-center">
           {/* Left Content */}
           <div className="text-center lg:text-left px-1">
             {/* Trust Badge */}
-            <div className="inline-flex items-center space-x-2 bg-white/80 backdrop-blur-sm rounded-full px-3 sm:px-4 py-2 mb-4 sm:mb-6 shadow-sm">
+            <div className="inline-flex items-center space-x-2 bg-white/80 backdrop-blur-sm rounded-full px-3 sm:px-4 py-2 mb-4 sm:mb-6 shadow-sm hover-lift animate-slide-up">
               <Star className="h-4 w-4 text-yellow-500 fill-current" />
               <span className="text-sm font-medium text-gray-700">Trusted by 1,000+ Users</span>
               <Award className="h-4 w-4 text-teal-600" />
             </div>
 
             {/* Main Heading */}
-            <div className="mb-4 sm:mb-6">
+            <div className="mb-4 sm:mb-6 animate-slide-up" style={{ animationDelay: '0.2s' }}>
               <div className="flex flex-wrap items-center gap-x-3 sm:gap-x-6">
                 {shouldAnimate && (
                   <>
@@ -94,19 +94,19 @@ const Hero = () => {
               </div>
             </div>
             
-            <p className="text-base sm:text-lg text-gray-600 mb-6 sm:mb-8 max-w-xs sm:max-w-2xl lg:max-w-none mx-auto lg:mx-0">
+            <p className="text-base sm:text-lg text-gray-600 mb-6 sm:mb-8 max-w-xs sm:max-w-2xl lg:max-w-none mx-auto lg:mx-0 animate-slide-up" style={{ animationDelay: '0.4s' }}>
               Blending Ancient Wisdom with Modern Science for Complete Mental Wellness
             </p>
 
             {/* Features List */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-3 mb-6 sm:mb-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-3 mb-6 sm:mb-8 animate-slide-up" style={{ animationDelay: '0.6s' }}>
               {[
                 'AI-Powered Emotional Healing',
                 'Ancient Wisdom Integration',
                 'Real-time Mood Detection',
                 '24/7 Emergency Support'
               ].map((feature, index) => (
-                <div key={index} className="flex items-center space-x-2">
+                <div key={index} className="flex items-center space-x-2 hover:bg-white/50 rounded-lg p-2 transition-smooth">
                   <CheckCircle className="h-5 w-5 text-teal-600 flex-shrink-0" />
                   <span className="text-gray-700 font-medium text-sm sm:text-base">{feature}</span>
                 </div>
@@ -114,7 +114,7 @@ const Hero = () => {
             </div>
 
             {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 mb-6 sm:mb-8">
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 mb-6 sm:mb-8 animate-slide-up" style={{ animationDelay: '0.8s' }}>
               {user ? (
                 <div className="flex items-center gap-4">
                
@@ -122,21 +122,21 @@ const Hero = () => {
               ) : (
                 <button
                   onClick={handleJourneyClick}
-                  className="group bg-gradient-to-r from-teal-600 to-purple-600 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full font-semibold hover:shadow-xl transform hover:scale-105 transition-all duration-300 flex items-center justify-center space-x-2 text-base sm:text-lg"
+                  className="group bg-gradient-to-r from-teal-600 to-purple-600 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full font-semibold interactive-button flex items-center justify-center space-x-2 text-base sm:text-lg"
                 >
                   <span>Start Your Healing Journey</span>
                   <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
                 </button>
               )}
               
-              <button className="group bg-white text-gray-700 px-6 sm:px-8 py-3 sm:py-4 rounded-full font-semibold border-2 border-gray-200 hover:border-teal-300 hover:shadow-lg transition-all duration-300 flex items-center justify-center space-x-2 text-base sm:text-lg">
+              <button className="group bg-white text-gray-700 px-6 sm:px-8 py-3 sm:py-4 rounded-full font-semibold border-2 border-gray-200 hover:border-teal-300 interactive-button flex items-center justify-center space-x-2 text-base sm:text-lg">
                 <Play className="h-5 w-5 text-teal-600" />
                 <span>Watch Demo</span>
               </button>
             </div>
 
             {/* Social Proof Numbers */}
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 pt-4 sm:pt-6 border-t border-gray-200">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 pt-4 sm:pt-6 border-t border-gray-200 animate-slide-up" style={{ animationDelay: '1s' }}>
               <div className="text-center">
                 <div className="text-2xl font-bold text-gray-900">1K+</div>
                 <div className="text-sm text-gray-600">Active Users</div>
@@ -153,12 +153,12 @@ const Hero = () => {
           </div>
 
           {/* Right Content - Visual */}
-          <div className="relative max-w-xs mx-auto lg:max-w-none lg:mx-0 mt-8 lg:mt-0">
+          <div className="relative max-w-xs mx-auto lg:max-w-none lg:mx-0 mt-8 lg:mt-0 animate-scale-in" style={{ animationDelay: '0.5s' }}>
             {/* Main Image Placeholder */}
-            <div className="relative bg-gradient-to-br from-teal-100 to-purple-100 rounded-3xl p-4 sm:p-8 shadow-2xl">
-              <div className="bg-white rounded-2xl p-4 sm:p-6 shadow-lg">
+            <div className="relative bg-gradient-to-br from-teal-100 to-purple-100 rounded-3xl p-4 sm:p-8 shadow-2xl hover-lift">
+              <div className="bg-white rounded-2xl p-4 sm:p-6 shadow-lg interactive-card">
                 <div className="text-center mb-4 sm:mb-6">
-                  <div className="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br from-teal-600 to-purple-600 rounded-full mx-auto mb-3 sm:mb-4 flex items-center justify-center">
+                  <div className="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br from-teal-600 to-purple-600 rounded-full mx-auto mb-3 sm:mb-4 flex items-center justify-center animate-bounce-gentle">
                     <Users className="h-8 w-8 text-white" />
                   </div>
                   <h3 className="text-base sm:text-lg font-semibold text-gray-900 mb-1 sm:mb-2">AI Wellness Companion</h3>
@@ -167,10 +167,10 @@ const Hero = () => {
                 
                 {/* Chat Interface Preview */}
                 <div className="space-y-2 sm:space-y-3">
-                  <div className="bg-gray-100 rounded-lg p-2 sm:p-3 text-xs sm:text-sm text-gray-700">
+                  <div className="bg-gray-100 rounded-lg p-2 sm:p-3 text-xs sm:text-sm text-gray-700 hover:bg-gray-200 transition-smooth">
                     "I'm feeling overwhelmed with work stress..."
                   </div>
-                  <div className="bg-gradient-to-r from-teal-600 to-purple-600 text-white rounded-lg p-2 sm:p-3 text-xs sm:text-sm ml-2 sm:ml-4">
+                  <div className="bg-gradient-to-r from-teal-600 to-purple-600 text-white rounded-lg p-2 sm:p-3 text-xs sm:text-sm ml-2 sm:ml-4 hover:shadow-lg transition-smooth">
                     "Let's explore this together. As the Gita teaches us about finding balance in action..."
                   </div>
                 </div>
@@ -179,19 +179,19 @@ const Hero = () => {
                 <div className="flex justify-between items-center mt-4 sm:mt-6 pt-2 sm:pt-4 border-t border-gray-200">
                   <div className="text-xs text-gray-500">Mood Detected: Stressed</div>
                   <div className="flex space-x-1">
-                    <div className="w-2 h-2 bg-yellow-400 rounded-full"></div>
-                    <div className="w-2 h-2 bg-green-400 rounded-full"></div>
-                    <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
+                    <div className="w-2 h-2 bg-yellow-400 rounded-full animate-pulse-soft"></div>
+                    <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse-soft" style={{ animationDelay: '0.5s' }}></div>
+                    <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse-soft" style={{ animationDelay: '1s' }}></div>
                   </div>
                 </div>
               </div>
             </div>
 
             {/* Floating Elements */}
-            <div className="hidden sm:block absolute -top-6 -right-6 bg-white rounded-full p-4 shadow-lg">
+            <div className="hidden sm:block absolute -top-6 -right-6 bg-white rounded-full p-4 shadow-lg hover-lift animate-float">
               <div className="text-2xl">🧘</div>
             </div>
-            <div className="hidden sm:block absolute -bottom-4 -left-4 bg-white rounded-full p-3 shadow-lg">
+            <div className="hidden sm:block absolute -bottom-4 -left-4 bg-white rounded-full p-3 shadow-lg hover-lift animate-float" style={{ animationDelay: '1s' }}>
               <div className="text-xl">✨</div>
             </div>
           </div>

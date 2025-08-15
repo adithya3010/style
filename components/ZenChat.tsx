@@ -199,25 +199,25 @@ const ZenChat = () => {
   };
 
   return (
-    <section className="min-h-screen flex items-center justify-center bg-gradient-to-br from-teal-200 via-white to-purple-200 px-4 py-12 pt-24 relative overflow-hidden">
+    <section className="min-h-screen flex items-center justify-center bg-gradient-to-br from-teal-200 via-white to-purple-200 px-4 py-12 page-spacing relative overflow-hidden">
       {/* Animated floating shapes */}
       <div className="absolute top-0 left-0 w-full h-full pointer-events-none z-0">
         <div className="absolute animate-float-slow left-10 top-10 w-32 h-32 bg-gradient-to-br from-teal-300 to-purple-200 rounded-full opacity-30 blur-2xl" />
         <div className="absolute animate-float-medium right-20 top-32 w-24 h-24 bg-gradient-to-br from-yellow-200 to-pink-200 rounded-full opacity-20 blur-2xl" />
         <div className="absolute animate-float-fast left-1/2 bottom-10 w-40 h-40 bg-gradient-to-br from-purple-200 to-teal-100 rounded-full opacity-20 blur-2xl" />
       </div>
-      <div className="w-full max-w-8xl bg-white/80 rounded-3xl shadow-2xl p-8 md:p-12 flex flex-col items-center relative overflow-hidden h-[90vh] min-h-[700px] border border-teal-100 z-10 backdrop-blur-xl">
+      <div className="w-full max-w-8xl bg-white/80 rounded-3xl shadow-2xl p-8 md:p-12 flex flex-col items-center relative overflow-hidden h-[90vh] min-h-[700px] border border-teal-100 z-10 backdrop-blur-xl animate-fade-in hover-lift">
         {/* Header */}
-        <div className="w-full flex flex-col items-center py-4 px-2 border-b border-teal-100 bg-gradient-to-r from-teal-50 to-purple-50/80 shadow-sm relative">
+        <div className="w-full flex flex-col items-center py-4 px-2 border-b border-teal-100 bg-gradient-to-r from-teal-50 to-purple-50/80 shadow-sm relative animate-slide-up">
           <Smile className="h-16 w-16 text-teal-500 mb-2 animate-bounce-slow drop-shadow-xl -mt-6" />
           <h1 className="text-4xl font-extrabold text-gray-900 mb-1 text-center tracking-tight drop-shadow">ZenChat</h1>
           <p className="text-lg text-gray-600 mb-2 text-center max-w-lg font-medium">Your safe space to share, reflect, and feel better. Type or record your feelings below.</p>
         </div>
         {/* Chat window */}
-        <div className="flex-1 w-full overflow-y-auto px-4 py-6 bg-white/70 rounded-xl mb-2 shadow-inner transition-all duration-300" style={{ minHeight: 0, maxHeight: '75vh' }}>
+        <div className="flex-1 w-full overflow-y-auto px-4 py-6 bg-white/70 rounded-xl mb-2 shadow-inner transition-smooth animate-slide-up" style={{ minHeight: 0, maxHeight: '75vh', animationDelay: '0.2s' }}>
           {chat.map((msg, idx) => (
-            <div key={idx} className={`flex ${msg.sender === 'user' ? 'justify-end' : 'justify-start'} mb-4 transition-all duration-300`}>
-              <div className={`max-w-[75%] px-5 py-4 rounded-3xl shadow-lg text-base whitespace-pre-line transition-all duration-300 ${msg.sender === 'user' ? 'bg-gradient-to-r from-teal-400 to-purple-400 text-white border-2 border-teal-200' : 'bg-gradient-to-r from-teal-50 to-purple-50 text-gray-900 border-2 border-teal-100'}`}>
+            <div key={idx} className={`flex ${msg.sender === 'user' ? 'justify-end' : 'justify-start'} mb-4 animate-slide-up`} style={{ animationDelay: `${idx * 0.1}s` }}>
+              <div className={`max-w-[75%] px-5 py-4 rounded-3xl shadow-lg text-base whitespace-pre-line hover-lift ${msg.sender === 'user' ? 'bg-gradient-to-r from-teal-400 to-purple-400 text-white border-2 border-teal-200' : 'bg-gradient-to-r from-teal-50 to-purple-50 text-gray-900 border-2 border-teal-100'}`}>
                 <div className="flex items-center gap-2 mb-1">
                   {msg.sender === 'user' ? <User className="h-5 w-5" /> : <Bot className="h-5 w-5 text-teal-600 animate-bounce-slow" />}
                   <span className="font-semibold text-xs tracking-wide">{msg.sender === 'user' ? 'You' : 'ZenBot'}</span>
@@ -227,8 +227,8 @@ const ZenChat = () => {
             </div>
           ))}
           {loading && (
-            <div className="flex justify-start mb-2">
-              <div className="max-w-[75%] px-5 py-4 rounded-3xl shadow-lg text-base bg-gradient-to-r from-teal-50 to-purple-50 text-gray-900 animate-pulse border-2 border-teal-100">
+            <div className="flex justify-start mb-2 animate-slide-up">
+              <div className="max-w-[75%] px-5 py-4 rounded-3xl shadow-lg text-base bg-gradient-to-r from-teal-50 to-purple-50 text-gray-900 animate-pulse-soft border-2 border-teal-100">
                 ZenBot is typing...
               </div>
             </div>
@@ -236,9 +236,9 @@ const ZenChat = () => {
           <div ref={chatEndRef} />
         </div>
         {/* Input area */}
-        <form onSubmit={handleSubmit} className="w-full flex flex-col md:flex-row items-center gap-2 px-4 pb-8 bg-gradient-to-t from-white/80 to-transparent">
+        <form onSubmit={handleSubmit} className="w-full flex flex-col md:flex-row items-center gap-2 px-4 pb-8 bg-gradient-to-t from-white/80 to-transparent animate-slide-up" style={{ animationDelay: '0.4s' }}>
           <textarea
-            className="flex-1 rounded-xl border-2 border-teal-200 p-4 min-h-[48px] focus:outline-none focus:ring-2 focus:ring-teal-400 transition resize-none bg-white/90 shadow-md font-medium text-gray-800 placeholder:text-teal-400"
+            className="flex-1 rounded-xl border-2 border-teal-200 p-4 min-h-[48px] focus:outline-none focus:ring-2 focus:ring-teal-400 transition-smooth resize-none bg-white/90 shadow-md font-medium text-gray-800 placeholder:text-teal-400 hover:border-teal-300"
             placeholder="Type your message..."
             value={input}
             onChange={e => setInput(e.target.value)}
@@ -251,7 +251,7 @@ const ZenChat = () => {
           <div className="flex flex-col gap-1 items-center md:flex-row md:gap-2">
             <button
               type="button"
-              className={`flex items-center gap-2 px-5 py-3 rounded-full font-semibold transition shadow-lg ${isRecording ? 'bg-teal-400 text-white' : 'bg-gradient-to-r from-teal-500 to-purple-500 text-white hover:from-teal-600 hover:to-purple-600'}`}
+              className={`flex items-center gap-2 px-5 py-3 rounded-full font-semibold shadow-lg interactive-button ${isRecording ? 'bg-teal-400 text-white' : 'bg-gradient-to-r from-teal-500 to-purple-500 text-white'}`}
               onClick={handleRecord}
               disabled={isRecording || loading}
             >
@@ -266,10 +266,10 @@ const ZenChat = () => {
               onChange={handleAudioUpload}
               disabled={isRecording || loading}
             />
-            <label htmlFor="audio-upload" className="cursor-pointer text-teal-600 hover:underline text-sm mt-1 md:mt-0 font-semibold">Upload Audio</label>
+            <label htmlFor="audio-upload" className="cursor-pointer text-teal-600 hover:underline text-sm mt-1 md:mt-0 font-semibold transition-smooth hover:text-teal-700">Upload Audio</label>
             <button
               type="submit"
-              className="bg-gradient-to-r from-teal-500 to-purple-500 text-white px-7 py-3 rounded-full font-bold flex items-center gap-2 shadow-lg hover:from-teal-600 hover:to-purple-600 transition text-lg"
+              className="bg-gradient-to-r from-teal-500 to-purple-500 text-white px-7 py-3 rounded-full font-bold flex items-center gap-2 shadow-lg interactive-button text-lg"
               disabled={isRecording || loading || (!input && !audioFile)}
             >
               <Send className="h-5 w-5" />

@@ -60,19 +60,19 @@ console.log("Header component rendered with user:", user);
 
   return (
     <HeaderNirvahaRectContext.Provider value={nirvahaRect}>
-      <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      <header className={`fixed top-0 left-0 right-0 z-50 transition-smooth ${
         isScrolled ? 'bg-white/95 backdrop-blur-md shadow-lg' : 'bg-transparent'
       }`}>
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16 lg:h-20">
             {/* Logo */}
-            <div className="flex items-center space-x-2">
-              <div className="bg-gradient-to-br from-teal-600 to-purple-600 p-2 rounded-xl">
+            <div className="flex items-center space-x-2 animate-slide-up">
+              <div className="bg-gradient-to-br from-teal-600 to-purple-600 p-2 rounded-xl hover:scale-110 transition-bounce animate-bounce-gentle">
                 <Heart className="h-6 w-6 text-white" />
               </div>
               <span
                 ref={nirvahaRef}
-                className="text-lg sm:text-2xl lg:text-3xl font-bold bg-gradient-to-r from-teal-600 to-purple-600 bg-clip-text text-transparent cursor-pointer"
+                className="text-lg sm:text-2xl lg:text-3xl font-bold bg-gradient-to-r from-teal-600 to-purple-600 bg-clip-text text-transparent cursor-pointer hover:scale-105 transition-bounce"
                 onClick={onNirvahaClick}
               >
                 Nirvaha
@@ -80,23 +80,23 @@ console.log("Header component rendered with user:", user);
             </div>
 
             {/* Desktop Navigation */}
-            <nav className="hidden lg:flex items-center space-x-8">
+            <nav className="hidden lg:flex items-center space-x-8 animate-slide-up" style={{ animationDelay: '0.2s' }}>
               {navItems.map((item) =>
                 item.name === 'Services' ? (
                   <div key={item.name} className="relative group">
                     <button
-                      className="text-gray-700 hover:text-teal-600 font-medium text-lg transition-colors duration-200 relative group"
+                      className="text-gray-700 hover:text-teal-600 font-medium text-lg transition-smooth relative group"
                     >
                       {item.name}
-                      <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-teal-600 transition-all duration-200 group-hover:w-full"></span>
+                      <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-teal-600 transition-smooth group-hover:w-full"></span>
                     </button>
-                    <div className="absolute left-0 mt-2 w-56 bg-white rounded-xl shadow-lg opacity-0 group-hover:opacity-100 pointer-events-none group-hover:pointer-events-auto transition-opacity duration-200 z-50">
+                    <div className="absolute left-0 mt-2 w-56 bg-white rounded-xl shadow-lg opacity-0 group-hover:opacity-100 pointer-events-none group-hover:pointer-events-auto transition-smooth z-50 hover-lift">
                       <ul className="py-2">
                         {serviceFeatures.map((feature) => (
                           <li key={feature.name}>
                             <a
                               href={feature.href}
-                              className="block px-4 py-2 text-gray-700 hover:bg-teal-50 hover:text-teal-600 transition-colors font-semibold text-lg sm:text-xl"
+                              className="block px-4 py-2 text-gray-700 hover:bg-teal-50 hover:text-teal-600 transition-smooth font-semibold text-lg sm:text-xl hover:translate-x-1"
                             >
                               {feature.name}
                             </a>
@@ -109,42 +109,42 @@ console.log("Header component rendered with user:", user);
                   <a
                     key={item.name}
                     href={item.href}
-                    className="text-gray-700 hover:text-teal-600 font-medium text-lg transition-colors duration-200 relative group"
+                    className="text-gray-700 hover:text-teal-600 font-medium text-lg transition-smooth relative group"
                   >
                     {item.name}
-                    <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-teal-600 transition-all duration-200 group-hover:w-full"></span>
+                    <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-teal-600 transition-smooth group-hover:w-full"></span>
                   </a>
                 )
               )}
             </nav>
 
             {/* CTA Buttons */}
-            <div className="hidden lg:flex items-center space-x-4">
+            <div className="hidden lg:flex items-center space-x-4 animate-slide-up" style={{ animationDelay: '0.4s' }}>
               <a
                 href="tel:+1-800-NIRVAHA"
-                className="flex items-center space-x-1 text-gray-600 hover:text-teal-600 transition-colors"
+                className="flex items-center space-x-1 text-gray-600 hover:text-teal-600 transition-smooth"
               >
                 <Phone className="h-5 w-5" />
                 <span className="text-base">Emergency Support</span>
               </a>
               {user ? (
                 <>
-                  <span className="flex items-center space-x-2 bg-gradient-to-r from-teal-100 to-purple-100 px-4 py-2 rounded-full font-medium text-teal-700 text-lg">
+                  <span className="flex items-center space-x-2 bg-gradient-to-r from-teal-100 to-purple-100 px-4 py-2 rounded-full font-medium text-teal-700 text-lg hover-lift">
                     Hey, {user.name} 
                   </span>
                   
-                  <a href="/profile" className="flex items-center gap-2 bg-gradient-to-r from-teal-600 to-purple-600 text-white px-6 py-2 rounded-full font-medium text-lg hover:shadow-lg transform hover:scale-105 transition-all duration-200">
+                  <a href="/profile" className="flex items-center gap-2 bg-gradient-to-r from-teal-600 to-purple-600 text-white px-6 py-2 rounded-full font-medium text-lg interactive-button">
                     <User className="h-5 w-5" /> Profile
                   </a>
                   <button
                     onClick={logout}
-                    className="flex items-center gap-2 bg-red-500 text-white px-4 py-2 rounded-full font-medium text-lg hover:bg-red-600 transition-all duration-200"
+                    className="flex items-center gap-2 bg-red-500 text-white px-4 py-2 rounded-full font-medium text-lg interactive-button"
                   >
                     <LogOut className="h-5 w-5" />
                   </button>
                 </>
               ) : (
-              <a href="/login" className="bg-gradient-to-r from-teal-600 to-purple-600 text-white px-6 py-2 rounded-full font-medium text-lg hover:shadow-lg transform hover:scale-105 transition-all duration-200">
+              <a href="/login" className="bg-gradient-to-r from-teal-600 to-purple-600 text-white px-6 py-2 rounded-full font-medium text-lg interactive-button">
                 Start Journey
               </a>
               )}
@@ -153,7 +153,7 @@ console.log("Header component rendered with user:", user);
             {/* Mobile Menu Button */}
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="lg:hidden p-2 rounded-md text-gray-700 hover:text-teal-600 transition-colors"
+              className="lg:hidden p-2 rounded-md text-gray-700 hover:text-teal-600 transition-smooth hover:scale-110"
             >
               {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
             </button>
@@ -161,13 +161,13 @@ console.log("Header component rendered with user:", user);
 
           {/* Mobile Menu */}
           {isMenuOpen && (
-            <div className="lg:hidden absolute top-full left-0 right-0 bg-white/95 backdrop-blur-md shadow-lg">
+            <div className="lg:hidden absolute top-full left-0 right-0 bg-white/95 backdrop-blur-md shadow-lg animate-slide-up">
               <nav className="px-4 py-6 space-y-4">
                 {navItems.map((item) => (
                   <a
                     key={item.name}
                     href={item.href}
-                    className="block text-gray-700 hover:text-teal-600 font-medium text-lg transition-colors duration-200"
+                    className="block text-gray-700 hover:text-teal-600 font-medium text-lg transition-smooth hover:translate-x-2"
                     onClick={() => setIsMenuOpen(false)}
                   >
                     {item.name}
@@ -176,25 +176,25 @@ console.log("Header component rendered with user:", user);
                 <div className="pt-4 border-t border-gray-200 space-y-3">
                   <a
                     href="tel:+1-800-NIRVAHA"
-                    className="flex items-center space-x-2 text-gray-600"
+                    className="flex items-center space-x-2 text-gray-600 hover:text-teal-600 transition-smooth"
                   >
                     <Phone className="h-5 w-5" />
                     <span className="text-lg">Emergency Support</span>
                   </a>
                   {user ? (
                     <>
-                      <a href="/profile" className="w-full bg-gradient-to-r from-teal-600 to-purple-600 text-white py-2 rounded-full font-medium text-lg">
+                      <a href="/profile" className="w-full bg-gradient-to-r from-teal-600 to-purple-600 text-white py-2 rounded-full font-medium text-lg interactive-button block text-center">
                         Profile
                       </a>
                       <button
                         onClick={logout}
-                        className="w-full bg-red-500 text-white py-2 rounded-full font-medium text-lg"
+                        className="w-full bg-red-500 text-white py-2 rounded-full font-medium text-lg interactive-button"
                       >
                         Logout
                       </button>
                     </>
                   ) : (
-                    <a href="/login" className="w-full bg-gradient-to-r from-teal-600 to-purple-600 text-white py-2 rounded-full font-medium text-lg">
+                    <a href="/login" className="w-full bg-gradient-to-r from-teal-600 to-purple-600 text-white py-2 rounded-full font-medium text-lg interactive-button block text-center">
                       Start Journey
                     </a>
                   )}

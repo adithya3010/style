@@ -79,27 +79,27 @@ const GuidedMeditation = () => {
   };
 
   return (
-    <section className="min-h-screen flex items-center justify-center bg-gradient-to-br from-teal-200 via-white to-purple-200 px-2 sm:px-4 py-8 sm:py-12 pt-20 sm:pt-24">
-      <div className="w-full max-w-8xl bg-white/80 rounded-3xl shadow-2xl p-3 sm:p-8 md:p-12 flex flex-col items-center relative overflow-hidden border border-teal-100 z-10 backdrop-blur-xl">
-        <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-2 text-center">Meditation Center</h1>
-        <p className="text-base sm:text-lg text-gray-600 mb-6 sm:mb-8 text-center max-w-xs sm:max-w-md mx-auto">
+    <section className="min-h-screen flex items-center justify-center bg-gradient-to-br from-teal-200 via-white to-purple-200 px-2 sm:px-4 py-8 sm:py-12 page-spacing">
+      <div className="w-full max-w-8xl bg-white/80 rounded-3xl shadow-2xl p-3 sm:p-8 md:p-12 flex flex-col items-center relative overflow-hidden border border-teal-100 z-10 backdrop-blur-xl animate-fade-in hover-lift">
+        <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-2 text-center animate-slide-up">Meditation Center</h1>
+        <p className="text-base sm:text-lg text-gray-600 mb-6 sm:mb-8 text-center max-w-xs sm:max-w-md mx-auto animate-slide-up" style={{ animationDelay: '0.2s' }}>
           Choose your meditation style: Mudra, AI-Guided, or Sound.
         </p>
         {/* Tabs */}
-        <div className="flex flex-col sm:flex-row gap-2 sm:gap-4 mb-6 sm:mb-8 w-full justify-center items-center">
-          <button onClick={() => setTab('mudra')} className={`px-6 py-2 rounded-full font-semibold transition shadow ${tab === 'mudra' ? 'bg-gradient-to-r from-teal-500 to-purple-500 text-white' : 'bg-white border border-teal-200 text-teal-700 hover:bg-teal-50'}`}>Mudra Meditation</button>
-          <button onClick={() => setTab('guided')} className={`px-6 py-2 rounded-full font-semibold transition shadow ${tab === 'guided' ? 'bg-gradient-to-r from-teal-500 to-purple-500 text-white' : 'bg-white border border-teal-200 text-teal-700 hover:bg-teal-50'}`}>Guided Meditation</button>
-          <button onClick={() => setTab('sound')} className={`px-6 py-2 rounded-full font-semibold transition shadow ${tab === 'sound' ? 'bg-gradient-to-r from-teal-500 to-purple-500 text-white' : 'bg-white border border-teal-200 text-teal-700 hover:bg-teal-50'}`}>Sound Meditation</button>
+        <div className="flex flex-col sm:flex-row gap-2 sm:gap-4 mb-6 sm:mb-8 w-full justify-center items-center animate-slide-up" style={{ animationDelay: '0.4s' }}>
+          <button onClick={() => setTab('mudra')} className={`px-6 py-2 rounded-full font-semibold transition-smooth shadow interactive-button ${tab === 'mudra' ? 'bg-gradient-to-r from-teal-500 to-purple-500 text-white' : 'bg-white border border-teal-200 text-teal-700 hover:bg-teal-50'}`}>Mudra Meditation</button>
+          <button onClick={() => setTab('guided')} className={`px-6 py-2 rounded-full font-semibold transition-smooth shadow interactive-button ${tab === 'guided' ? 'bg-gradient-to-r from-teal-500 to-purple-500 text-white' : 'bg-white border border-teal-200 text-teal-700 hover:bg-teal-50'}`}>Guided Meditation</button>
+          <button onClick={() => setTab('sound')} className={`px-6 py-2 rounded-full font-semibold transition-smooth shadow interactive-button ${tab === 'sound' ? 'bg-gradient-to-r from-teal-500 to-purple-500 text-white' : 'bg-white border border-teal-200 text-teal-700 hover:bg-teal-50'}`}>Sound Meditation</button>
         </div>
         {/* Tab Content */}
         {tab === 'mudra' && (
-          <div className="w-full flex flex-col items-center">
+          <div className="w-full flex flex-col items-center animate-fade-in">
             <h2 className="text-lg sm:text-2xl font-bold text-teal-700 mb-2 sm:mb-4 flex items-center gap-2"><Hand className="h-6 w-6" /> Mudra Meditation</h2>
             <p className="text-gray-700 mb-4 sm:mb-6 text-center text-sm sm:text-base">Follow the mudra instructions below. Hold each mudra for 2-5 minutes while breathing deeply and focusing on your inner calm.</p>
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-8 w-full">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-8 w-full animate-slide-up" style={{ animationDelay: '0.2s' }}>
               {mudras.map((mudra) => (
-                <div key={mudra.name} className="flex flex-col items-center bg-gradient-to-br from-teal-50 to-purple-50 rounded-xl p-6 shadow border border-teal-100">
-                  <img src={mudra.img} alt={mudra.name} className="w-24 h-24 object-cover rounded-lg mb-3 shadow" />
+                <div key={mudra.name} className="flex flex-col items-center bg-gradient-to-br from-teal-50 to-purple-50 rounded-xl p-6 shadow border border-teal-100 interactive-card animate-scale-in">
+                  <img src={mudra.img} alt={mudra.name} className="w-24 h-24 object-cover rounded-lg mb-3 shadow hover:scale-110 transition-bounce" />
                   <h4 className="font-semibold mb-1 text-center">{mudra.name}</h4>
                   <p className="text-sm text-gray-600 text-center">{mudra.desc}</p>
                 </div>
@@ -108,34 +108,34 @@ const GuidedMeditation = () => {
           </div>
         )}
         {tab === 'guided' && (
-          <div className="w-full flex flex-col items-center">
+          <div className="w-full flex flex-col items-center animate-fade-in">
             <h2 className="text-lg sm:text-2xl font-bold text-purple-700 mb-2 sm:mb-4 flex items-center gap-2"><Bot className="h-6 w-6" /> AI-Guided Meditation</h2>
             <p className="text-gray-700 mb-4 sm:mb-6 text-center text-sm sm:text-base">Let our AI character guide you through a relaxing meditation. Close your eyes, follow the instructions, and breathe deeply.</p>
-            <div className="flex flex-col items-center mb-6 sm:mb-8">
+            <div className="flex flex-col items-center mb-6 sm:mb-8 animate-scale-in" style={{ animationDelay: '0.2s' }}>
               <span className="text-3xl sm:text-5xl font-mono text-teal-600 mb-2">{formatTime(timer)}</span>
               <div className="flex gap-2 sm:gap-4">
                 {!isMeditating && !finished && (
-                  <button onClick={startMeditation} className="bg-gradient-to-r from-teal-500 to-purple-500 text-white px-6 py-2 rounded-full font-medium flex items-center gap-2 shadow hover:from-teal-600 hover:to-purple-600 transition">
+                  <button onClick={startMeditation} className="bg-gradient-to-r from-teal-500 to-purple-500 text-white px-6 py-2 rounded-full font-medium flex items-center gap-2 shadow interactive-button">
                     <Play className="h-5 w-5" /> Start
                   </button>
                 )}
                 {isMeditating && (
-                  <button onClick={pauseMeditation} className="bg-yellow-400 text-white px-6 py-2 rounded-full font-medium flex items-center gap-2 shadow hover:bg-yellow-500 transition">
+                  <button onClick={pauseMeditation} className="bg-yellow-400 text-white px-6 py-2 rounded-full font-medium flex items-center gap-2 shadow interactive-button">
                     <Pause className="h-5 w-5" /> Pause
                   </button>
                 )}
-                <button onClick={resetMeditation} className="bg-gray-200 text-gray-700 px-6 py-2 rounded-full font-medium flex items-center gap-2 shadow hover:bg-gray-300 transition">
+                <button onClick={resetMeditation} className="bg-gray-200 text-gray-700 px-6 py-2 rounded-full font-medium flex items-center gap-2 shadow interactive-button">
                   Reset
                 </button>
               </div>
             </div>
             {!finished ? (
-              <div className="bg-gradient-to-r from-teal-50 to-purple-50 rounded-xl p-6 text-center text-lg text-gray-700 shadow max-w-xl">
+              <div className="bg-gradient-to-r from-teal-50 to-purple-50 rounded-xl p-6 text-center text-lg text-gray-700 shadow max-w-xl hover-lift animate-scale-in" style={{ animationDelay: '0.4s' }}>
                 <span className="block mb-2 font-semibold text-teal-700">AI says:</span>
                 "Take a deep breath in... and out. Let your thoughts drift by like clouds. You are safe, supported, and at peace."
               </div>
             ) : (
-              <div className="flex flex-col items-center mt-8 animate-fade-in">
+              <div className="flex flex-col items-center mt-8 animate-scale-in">
                 <CheckCircle className="h-12 w-12 text-green-500 mb-4 animate-bounce" />
                 <h2 className="text-2xl font-bold text-gray-900 mb-2 text-center">Well done!</h2>
                 <p className="text-lg text-gray-700 mb-4 text-center">You completed your meditation. Carry this peace with you.</p>
@@ -144,40 +144,40 @@ const GuidedMeditation = () => {
           </div>
         )}
         {tab === 'sound' && (
-          <div className="w-full flex flex-col items-center">
+          <div className="w-full flex flex-col items-center animate-fade-in">
             <h2 className="text-lg sm:text-2xl font-bold text-blue-700 mb-2 sm:mb-4 flex items-center gap-2"><Music className="h-6 w-6" /> Sound Meditation</h2>
             <p className="text-gray-700 mb-4 sm:mb-6 text-center text-sm sm:text-base">Listen to nature sounds and meditate. Let the vibrations restore your balance.</p>
-            <div className="flex flex-col gap-4 sm:gap-6 w-full mb-6 sm:mb-8">
+            <div className="flex flex-col gap-4 sm:gap-6 w-full mb-6 sm:mb-8 animate-slide-up" style={{ animationDelay: '0.2s' }}>
               {natureSounds.map((sound, idx) => (
-                <div key={sound.name} className={`flex items-center gap-4 p-4 rounded-xl border-2 transition-all ${currentSound === idx ? 'border-teal-500 bg-teal-50' : 'border-gray-200 bg-white hover:border-teal-300'}`}>
+                <div key={sound.name} className={`flex items-center gap-4 p-4 rounded-xl border-2 interactive-card animate-scale-in ${currentSound === idx ? 'border-teal-500 bg-teal-50' : 'border-gray-200 bg-white hover:border-teal-300'}`} style={{ animationDelay: `${idx * 0.1}s` }}>
                   {sound.icon}
                   <span className="flex-1 font-medium">{sound.name}</span>
                   {isPlaying && currentSound === idx ? (
-                    <button onClick={pauseSound} className="bg-yellow-400 text-white px-4 py-2 rounded-full font-medium flex items-center gap-2 shadow hover:bg-yellow-500 transition">
+                    <button onClick={pauseSound} className="bg-yellow-400 text-white px-4 py-2 rounded-full font-medium flex items-center gap-2 shadow interactive-button">
                       <Pause className="h-5 w-5" /> Pause
                     </button>
                   ) : (
-                    <button onClick={() => playSound(idx)} className="bg-gradient-to-r from-teal-500 to-purple-500 text-white px-4 py-2 rounded-full font-medium flex items-center gap-2 shadow hover:from-teal-600 hover:to-purple-600 transition">
+                    <button onClick={() => playSound(idx)} className="bg-gradient-to-r from-teal-500 to-purple-500 text-white px-4 py-2 rounded-full font-medium flex items-center gap-2 shadow interactive-button">
                       <Play className="h-5 w-5" /> Play
                     </button>
                   )}
                 </div>
               ))}
             </div>
-            <div className="flex flex-col items-center mb-6 sm:mb-8">
+            <div className="flex flex-col items-center mb-6 sm:mb-8 animate-scale-in" style={{ animationDelay: '0.4s' }}>
               <span className="text-3xl sm:text-5xl font-mono text-teal-600 mb-2">{formatTime(timer)}</span>
               <div className="flex gap-2 sm:gap-4">
                 {!isMeditating && !finished && (
-                  <button onClick={startMeditation} className="bg-gradient-to-r from-teal-500 to-purple-500 text-white px-6 py-2 rounded-full font-medium flex items-center gap-2 shadow hover:from-teal-600 hover:to-purple-600 transition">
+                  <button onClick={startMeditation} className="bg-gradient-to-r from-teal-500 to-purple-500 text-white px-6 py-2 rounded-full font-medium flex items-center gap-2 shadow interactive-button">
                     <Play className="h-5 w-5" /> Start
                   </button>
                 )}
                 {isMeditating && (
-                  <button onClick={pauseMeditation} className="bg-yellow-400 text-white px-6 py-2 rounded-full font-medium flex items-center gap-2 shadow hover:bg-yellow-500 transition">
+                  <button onClick={pauseMeditation} className="bg-yellow-400 text-white px-6 py-2 rounded-full font-medium flex items-center gap-2 shadow interactive-button">
                     <Pause className="h-5 w-5" /> Pause
                   </button>
                 )}
-                <button onClick={resetMeditation} className="bg-gray-200 text-gray-700 px-6 py-2 rounded-full font-medium flex items-center gap-2 shadow hover:bg-gray-300 transition">
+                <button onClick={resetMeditation} className="bg-gray-200 text-gray-700 px-6 py-2 rounded-full font-medium flex items-center gap-2 shadow interactive-button">
                   Reset
                 </button>
               </div>

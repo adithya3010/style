@@ -47,14 +47,14 @@ const CreateAccount: React.FC = () => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-br from-teal-200 via-white to-purple-200">
-      <div className="bg-white/80 p-10 sm:p-14 rounded-3xl shadow-2xl flex flex-col items-center w-full max-w-lg">
-        <h2 className="text-3xl font-bold mb-8">Create your Nirvaha account</h2>
-        <div className="flex justify-between mb-8 w-full max-w-xs mx-auto">
+    <div className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-br from-teal-200 via-white to-purple-200 page-spacing">
+      <div className="bg-white/80 p-10 sm:p-14 rounded-3xl shadow-2xl flex flex-col items-center w-full max-w-lg animate-scale-in hover-lift">
+        <h2 className="text-3xl font-bold mb-8 animate-slide-up">Create your Nirvaha account</h2>
+        <div className="flex justify-between mb-8 w-full max-w-xs mx-auto animate-slide-up" style={{ animationDelay: '0.2s' }}>
           {["Details", "Password"].map((label, index) => (
             <div key={index} className="flex-1 flex flex-col items-center">
               <div
-                className={`w-10 h-10 flex items-center justify-center rounded-full ${
+                className={`w-10 h-10 flex items-center justify-center rounded-full transition-bounce ${
                   step >= index + 1
                     ? "bg-gradient-to-r from-teal-500 to-purple-500 text-white shadow-lg"
                     : "bg-gray-200 text-gray-700"
@@ -104,7 +104,7 @@ const CreateAccount: React.FC = () => {
         </AnimatePresence>
         <button
           onClick={() => navigate("/")}
-          className="mt-8 w-full py-2 bg-gradient-to-r from-teal-500 to-purple-500 text-white font-semibold rounded-full transition cursor-pointer shadow hover:from-teal-600 hover:to-purple-600 text-lg"
+          className="mt-8 w-full py-2 bg-gradient-to-r from-teal-500 to-purple-500 text-white font-semibold rounded-full cursor-pointer shadow interactive-button text-lg animate-slide-up" style={{ animationDelay: '0.6s' }}
         >
           Back to Login
         </button>

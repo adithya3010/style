@@ -168,26 +168,26 @@ const PersonalizedSessions = () => {
   };
 
   return (
-    <section className="min-h-screen flex items-center justify-center bg-gradient-to-br from-purple-100 via-white to-teal-100 px-4 py-12 pt-24">
-      <div className="w-full max-w-8xl bg-white/80 rounded-3xl shadow-2xl p-8 md:p-12 flex flex-col items-center relative overflow-hidden">
-        <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-2 text-center">Personalized Sessions</h1>
-        <p className="text-lg text-gray-600 mb-8 text-center max-w-2xl">
+    <section className="min-h-screen flex items-center justify-center bg-gradient-to-br from-purple-100 via-white to-teal-100 px-4 py-12 page-spacing">
+      <div className="w-full max-w-8xl bg-white/80 rounded-3xl shadow-2xl p-8 md:p-12 flex flex-col items-center relative overflow-hidden animate-fade-in hover-lift">
+        <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-2 text-center animate-slide-up">Personalized Sessions</h1>
+        <p className="text-lg text-gray-600 mb-8 text-center max-w-2xl animate-slide-up" style={{ animationDelay: '0.2s' }}>
           Choose your preferred session mode and book a personalized experience.
         </p>
         
         {/* Mode Selection */}
-        <div className="w-full mb-8">
+        <div className="w-full mb-8 animate-slide-up" style={{ animationDelay: '0.4s' }}>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-2xl mx-auto">
             <button
               onClick={() => handleModeChange('therapy')}
-              className={`p-4 rounded-xl border-2 transition-all duration-200 ${
+              className={`p-4 rounded-xl border-2 interactive-card ${
                 selectedMode === 'therapy'
                   ? 'border-teal-500 bg-teal-50 text-teal-700'
                   : 'border-gray-200 bg-white/80 text-gray-600 hover:border-teal-300'
               }`}
             >
               <div className="flex flex-col items-center gap-2">
-                <UserCheck className="h-6 w-6" />
+                <UserCheck className="h-6 w-6 animate-bounce-gentle" />
                 <span className="font-semibold">Therapy Sessions</span>
                 <span className="text-sm text-center">Professional therapy with certified doctors</span>
               </div>
@@ -195,14 +195,14 @@ const PersonalizedSessions = () => {
             
             <button
               onClick={() => handleModeChange('companion')}
-              className={`p-4 rounded-xl border-2 transition-all duration-200 ${
+              className={`p-4 rounded-xl border-2 interactive-card ${
                 selectedMode === 'companion'
                   ? 'border-purple-500 bg-purple-50 text-purple-700'
                   : 'border-gray-200 bg-white/80 text-gray-600 hover:border-purple-300'
               }`}
             >
               <div className="flex flex-col items-center gap-2">
-                <Users className="h-6 w-6" />
+                <Users className="h-6 w-6 animate-bounce-gentle" style={{ animationDelay: '0.5s' }} />
                 <span className="font-semibold">Companion Mode</span>
                 <span className="text-sm text-center">Peer support with other students</span>
               </div>
@@ -210,7 +210,7 @@ const PersonalizedSessions = () => {
           </div>
         </div>
         {!submitted ? (
-          <form onSubmit={handleSubmit} className="w-full flex flex-col gap-6">
+          <form onSubmit={handleSubmit} className="w-full flex flex-col gap-6 animate-slide-up" style={{ animationDelay: '0.6s' }}>
             {/* Doctor Selection for Therapy Mode */}
             {selectedMode === 'therapy' && (
               <div className="mb-6">
@@ -222,22 +222,22 @@ const PersonalizedSessions = () => {
                     <div
                       key={doctor.id}
                       onClick={() => setForm({ ...form, selectedDoctor: doctor.id })}
-                      className={`p-4 rounded-xl border-2 cursor-pointer transition-all duration-200 ${
+                      className={`p-4 rounded-xl border-2 cursor-pointer interactive-card animate-scale-in ${
                         form.selectedDoctor === doctor.id
                           ? 'border-teal-500 bg-teal-50'
                           : 'border-gray-200 bg-white/80 hover:border-teal-300'
-                      }`}
+                      }`} style={{ animationDelay: `${doctor.id * 0.1}s` }}
                     >
                       <div className="text-center">
-                        <div className="text-4xl mb-3">{doctor.image}</div>
+                        <div className="text-4xl mb-3 animate-bounce-gentle">{doctor.image}</div>
                         <h3 className="font-semibold text-gray-900 text-lg mb-1">{doctor.name}</h3>
                         <p className="text-sm font-medium text-teal-600 mb-2">{doctor.specialization}</p>
                         <div className="flex items-center justify-center gap-1 mb-2">
-                          <Star className="h-4 w-4 text-yellow-500 fill-current" />
+                          <Star className="h-4 w-4 text-yellow-500 fill-current animate-pulse-soft" />
                           <span className="text-sm font-medium text-yellow-700">{doctor.rating}</span>
                         </div>
                         {form.selectedDoctor === doctor.id && (
-                          <div className="mt-3 pt-3 border-t border-teal-200">
+                          <div className="mt-3 pt-3 border-t border-teal-200 animate-fade-in">
                             <p className="text-xs text-gray-600 mb-2 leading-relaxed">{doctor.description}</p>
                             <div className="space-y-1 text-xs text-gray-500">
                               <div>Experience: {doctor.experience}</div>
@@ -257,7 +257,7 @@ const PersonalizedSessions = () => {
 
             {/* Continue with Registration Button for Therapy Mode - Only show after doctor selection */}
             {selectedMode === 'therapy' && form.selectedDoctor && (
-              <div className="w-full space-y-4">
+              <div className="w-full space-y-4 animate-scale-in">
                 <h3 className="text-lg font-semibold text-gray-900 mb-4 text-center">
                   Book Session with {collaboratingDoctors.find(d => d.id === form.selectedDoctor)?.name}
                 </h3>
@@ -267,7 +267,7 @@ const PersonalizedSessions = () => {
             <button
                     type="button"
                     onClick={() => setSubmitted(true)}
-              className="w-full bg-gradient-to-r from-teal-500 to-purple-500 text-white py-3 rounded-xl font-semibold text-lg shadow-lg hover:from-teal-600 hover:to-purple-600 transition-all duration-200"
+              className="w-full bg-gradient-to-r from-teal-500 to-purple-500 text-white py-3 rounded-xl font-semibold text-lg shadow-lg interactive-button"
             >
                     Continue with Registration
                   </button>
@@ -289,27 +289,27 @@ const PersonalizedSessions = () => {
                     <div
                       key={companion.id}
                       onClick={() => setForm({ ...form, selectedCompanion: companion.id })}
-                      className={`p-4 rounded-xl border-2 cursor-pointer transition-all duration-200 ${
+                      className={`p-4 rounded-xl border-2 cursor-pointer interactive-card animate-scale-in ${
                         form.selectedCompanion === companion.id
                           ? 'border-purple-500 bg-purple-50'
                           : 'border-gray-200 bg-white/80 hover:border-purple-300'
-                      }`}
+                      }`} style={{ animationDelay: `${companion.id * 0.1}s` }}
                     >
                       <div className="text-center">
-                        <div className="text-4xl mb-3">{companion.image}</div>
+                        <div className="text-4xl mb-3 animate-bounce-gentle">{companion.image}</div>
                         <div className="flex items-center justify-center gap-1 mb-2">
                           <h3 className="font-semibold text-gray-900 text-lg">{companion.name}</h3>
                           {companion.verified && (
-                            <Shield className="h-4 w-4 text-purple-500 fill-current" />
+                            <Shield className="h-4 w-4 text-purple-500 fill-current animate-pulse-soft" />
                           )}
                         </div>
                         <p className="text-sm font-medium text-purple-600 mb-2">{companion.specialization}</p>
                         <div className="flex items-center justify-center gap-1 mb-2">
-                          <Star className="h-4 w-4 text-yellow-500 fill-current" />
+                          <Star className="h-4 w-4 text-yellow-500 fill-current animate-pulse-soft" />
                           <span className="text-sm font-medium text-yellow-700">{companion.rating}</span>
                         </div>
                         {form.selectedCompanion === companion.id && (
-                          <div className="mt-3 pt-3 border-t border-purple-200">
+                          <div className="mt-3 pt-3 border-t border-purple-200 animate-fade-in">
                             <p className="text-xs text-gray-600 mb-2 leading-relaxed">{companion.description}</p>
                             <div className="space-y-1 text-xs text-gray-500">
                               <div>Experience: {companion.experience}</div>
@@ -321,7 +321,7 @@ const PersonalizedSessions = () => {
                                 <span className="text-xs font-medium text-purple-600">Interests:</span>
                                 <div className="flex flex-wrap gap-1 mt-1 justify-center">
                                   {companion.interests.map((interest, index) => (
-                                    <span key={index} className="text-xs bg-purple-100 text-purple-700 px-2 py-1 rounded-full">
+                                    <span key={index} className="text-xs bg-purple-100 text-purple-700 px-2 py-1 rounded-full hover:bg-purple-200 transition-smooth">
                                       {interest}
                                     </span>
                                   ))}
@@ -339,7 +339,7 @@ const PersonalizedSessions = () => {
 
             {/* Continue with Registration Button for Companion Mode - Only show after companion selection */}
             {selectedMode === 'companion' && form.selectedCompanion && (
-              <div className="w-full space-y-4">
+              <div className="w-full space-y-4 animate-scale-in">
                 <h3 className="text-lg font-semibold text-gray-900 mb-4 text-center">
                   Book Session with {verifiedCompanions.find(c => c.id === form.selectedCompanion)?.name}
                 </h3>
@@ -349,7 +349,7 @@ const PersonalizedSessions = () => {
                   <button
                     type="button"
                     onClick={() => setSubmitted(true)}
-                    className="w-full bg-gradient-to-r from-purple-500 to-pink-500 text-white py-3 rounded-xl font-semibold text-lg shadow-lg hover:from-purple-600 hover:to-pink-600 transition-all duration-200"
+                    className="w-full bg-gradient-to-r from-purple-500 to-pink-500 text-white py-3 rounded-xl font-semibold text-lg shadow-lg interactive-button"
                   >
                     Continue with Registration
             </button>
@@ -362,7 +362,7 @@ const PersonalizedSessions = () => {
 
           </form>
         ) : (
-          <div className="flex flex-col items-center mt-8 animate-fade-in">
+          <div className="flex flex-col items-center mt-8 animate-scale-in">
             <CheckCircle className="h-12 w-12 text-green-500 mb-4 animate-bounce" />
             <h2 className="text-2xl font-bold text-gray-900 mb-2 text-center">Ready for Registration!</h2>
             <p className="text-lg text-gray-700 mb-4 text-center">
@@ -392,7 +392,7 @@ const PersonalizedSessions = () => {
                   // Navigate to registration page
                   window.location.href = '/register';
                 }}
-                className="bg-gradient-to-r from-teal-500 to-purple-500 text-white px-6 py-3 rounded-xl font-semibold shadow-lg hover:from-teal-600 hover:to-purple-600 transition-all duration-200"
+                className="bg-gradient-to-r from-teal-500 to-purple-500 text-white px-6 py-3 rounded-xl font-semibold shadow-lg interactive-button"
               >
                 Go to Registration
               </button>

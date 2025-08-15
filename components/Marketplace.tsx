@@ -75,23 +75,23 @@ const [cart, setCart] = useState<CartItem[]>([]);
   };
 
   return (
-    <section className="min-h-screen flex items-center justify-center bg-gradient-to-br from-teal-200 via-white to-purple-200 px-2 sm:px-4 py-8 sm:py-12 pt-20 sm:pt-24">
-      <div className="w-full max-w-8xl bg-white/80 rounded-3xl shadow-2xl p-3 sm:p-8 md:p-12 flex flex-col items-center relative overflow-hidden border border-teal-100 z-10 backdrop-blur-xl">
+    <section className="min-h-screen flex items-center justify-center bg-gradient-to-br from-teal-200 via-white to-purple-200 px-2 sm:px-4 py-8 sm:py-12 page-spacing">
+      <div className="w-full max-w-8xl bg-white/80 rounded-3xl shadow-2xl p-3 sm:p-8 md:p-12 flex flex-col items-center relative overflow-hidden border border-teal-100 z-10 backdrop-blur-xl animate-fade-in hover-lift">
         {/* Header with cart icon */}
-        <div className="flex w-full items-center justify-between mb-4">
+        <div className="flex w-full items-center justify-between mb-4 animate-slide-up">
           <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 text-center flex-1">Wellness Marketplace</h1>
-          <button className="relative ml-4" onClick={() => setCartOpen(true)} aria-label="Open cart">
-            <ShoppingCart className="h-7 w-7 text-teal-600" />
+          <button className="relative ml-4 interactive-button p-2 rounded-full hover:bg-teal-50" onClick={() => setCartOpen(true)} aria-label="Open cart">
+            <ShoppingCart className="h-7 w-7 text-teal-600 hover:scale-110 transition-bounce" />
             {cart.length > 0 && (
-              <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full px-2 py-0.5">{cart.length}</span>
+              <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full px-2 py-0.5 animate-bounce-gentle">{cart.length}</span>
             )}
           </button>
         </div>
 
         {/* Cart Drawer/Modal */}
         {cartOpen && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40">
-            <div className="bg-white rounded-2xl shadow-2xl p-6 w-full max-w-md relative animate-fade-in flex flex-col">
+          <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 animate-fade-in">
+            <div className="bg-white rounded-2xl shadow-2xl p-6 w-full max-w-md relative animate-scale-in flex flex-col hover-lift">
               <button className="absolute top-2 right-2 text-gray-500 hover:text-red-500 text-2xl" onClick={() => setCartOpen(false)} aria-label="Close cart">&times;</button>
               <h2 className="text-2xl font-bold mb-4 text-center">Your Cart</h2>
               {cart.length === 0 ? (
@@ -99,26 +99,26 @@ const [cart, setCart] = useState<CartItem[]>([]);
               ) : (
                 <ul className="mb-4 divide-y divide-gray-200">
                   {cart.map((item, idx) => (
-                    <li key={item.name + idx} className="flex items-center justify-between py-2">
+                    <li key={item.name + idx} className="flex items-center justify-between py-2 hover:bg-gray-50 rounded-lg px-2 transition-smooth">
                       <div className="flex items-center gap-3">
-                        <img src={item.img} alt={item.name} className="w-10 h-10 object-cover rounded" />
+                        <img src={item.img} alt={item.name} className="w-10 h-10 object-cover rounded hover:scale-110 transition-bounce" />
                         <span className="font-medium">{item.name}</span>
                       </div>
                       <div className="flex items-center gap-2">
                         <button
-                          className="px-2 py-1 rounded bg-gray-200 text-gray-700 font-bold hover:bg-gray-300"
+                          className="px-2 py-1 rounded bg-gray-200 text-gray-700 font-bold interactive-button"
                           onClick={() => decrementQty(item.name)}
                           aria-label={`Decrease quantity of ${item.name}`}
                         >-</button>
                         <span className="font-semibold w-6 text-center">{item.quantity}</span>
                         <button
-                          className="px-2 py-1 rounded bg-gray-200 text-gray-700 font-bold hover:bg-gray-300"
+                          className="px-2 py-1 rounded bg-gray-200 text-gray-700 font-bold interactive-button"
                           onClick={() => incrementQty(item.name)}
                           aria-label={`Increase quantity of ${item.name}`}
                         >+</button>
                         <span className="text-teal-600 font-bold ml-2">{item.price}</span>
                         <button
-                          className="ml-2 text-red-500 hover:text-red-700 text-lg font-bold"
+                          className="ml-2 text-red-500 hover:text-red-700 text-lg font-bold transition-smooth hover:scale-110"
                           onClick={() => removeFromCart(item.name)}
                           aria-label={`Remove ${item.name} from cart`}
                         >&times;</button>
@@ -128,7 +128,7 @@ const [cart, setCart] = useState<CartItem[]>([]);
                 </ul>
               )}
               <button
-                className="w-full bg-gradient-to-r from-teal-600 to-purple-600 text-white py-3 rounded-xl font-semibold text-lg shadow-lg hover:from-teal-700 hover:to-purple-700 transition-all duration-200 mt-2"
+                className="w-full bg-gradient-to-r from-teal-600 to-purple-600 text-white py-3 rounded-xl font-semibold text-lg shadow-lg interactive-button mt-2"
                 onClick={() => {
                   window.open('https://www.instagram.com/_nirvaha_?igsh=amxrZXZ5emJuOHoz', '_blank');
                   setCartOpen(false);
@@ -141,15 +141,15 @@ const [cart, setCart] = useState<CartItem[]>([]);
           </div>
         )}
         {/* Search and categories */}
-        <div className="flex flex-col sm:flex-row w-full gap-4 mb-8">
-          <div className="flex-1 flex items-center bg-white rounded-xl shadow px-3 py-2 border border-gray-200">
+        <div className="flex flex-col sm:flex-row w-full gap-4 mb-8 animate-slide-up" style={{ animationDelay: '0.2s' }}>
+          <div className="flex-1 flex items-center bg-white rounded-xl shadow px-3 py-2 border border-gray-200 hover:border-teal-300 transition-smooth">
             <Search className="h-5 w-5 text-gray-400 mr-2" />
             <input
               type="text"
               placeholder="Search products..."
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              className="w-full bg-transparent outline-none text-base"
+              className="w-full bg-transparent outline-none text-base focus:placeholder-transparent transition-smooth"
             />
           </div>
           <div className="flex gap-2 overflow-x-auto">
@@ -157,7 +157,7 @@ const [cart, setCart] = useState<CartItem[]>([]);
               <button
                 key={cat}
                 onClick={() => setSelectedCategory(cat)}
-                className={`px-4 py-2 rounded-full font-medium border transition-all whitespace-nowrap ${selectedCategory === cat ? 'bg-teal-600 text-white border-teal-600' : 'bg-white text-gray-700 border-gray-200 hover:bg-teal-50'}`}
+                className={`px-4 py-2 rounded-full font-medium border transition-smooth whitespace-nowrap interactive-button ${selectedCategory === cat ? 'bg-teal-600 text-white border-teal-600' : 'bg-white text-gray-700 border-gray-200 hover:bg-teal-50'}`}
               >
                 {cat}
               </button>
@@ -165,21 +165,21 @@ const [cart, setCart] = useState<CartItem[]>([]);
           </div>
         </div>
         {/* Product grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-8 w-full">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-8 w-full animate-slide-up" style={{ animationDelay: '0.4s' }}>
           {filteredProducts.map((product) => (
-            <div key={product.name} className="bg-white rounded-xl shadow p-6 flex flex-col items-center border border-gray-100 hover:shadow-lg transition-all">
-              <img src={product.img} alt={product.name} className="w-32 h-32 object-cover rounded-lg mb-4" />
+            <div key={product.name} className="bg-white rounded-xl shadow p-6 flex flex-col items-center border border-gray-100 interactive-card animate-scale-in">
+              <img src={product.img} alt={product.name} className="w-32 h-32 object-cover rounded-lg mb-4 hover:scale-110 transition-bounce" />
               <h4 className="font-semibold mb-2 text-center">{product.name}</h4>
               <span className="text-teal-600 font-bold mb-2">{product.price}</span>
               <div className="flex gap-2 mt-2">
                 <button
-                  className="bg-gradient-to-r from-teal-500 to-purple-500 text-white px-4 py-2 rounded-full font-medium shadow hover:from-teal-600 hover:to-purple-600 transition"
+                  className="bg-gradient-to-r from-teal-500 to-purple-500 text-white px-4 py-2 rounded-full font-medium shadow interactive-button"
                   onClick={() => addToCart(product)}
                 >
                   Add to Cart
                 </button>
                 <button
-                  className="bg-white border border-teal-500 text-teal-600 px-4 py-2 rounded-full font-medium hover:bg-teal-50 transition"
+                  className="bg-white border border-teal-500 text-teal-600 px-4 py-2 rounded-full font-medium interactive-button"
                   onClick={() => alert('View details coming soon!')}
                 >
                   View Details
